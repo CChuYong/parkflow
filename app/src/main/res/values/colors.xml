@@ -1,0 +1,14 @@
+<resources>
+    <color name="parkflow_canvas">#F7F8FA</color>
+    <color name="parkflow_surface">#FFFFFF</color>
+    <color name="parkflow_ink">#131417</color>
+    <color name="parkflow_supporting">#44464E</color>
+    <color name="parkflow_muted">#686A72</color>
+    <color name="parkflow_border">#C7C9CE</color>
+    <color name="parkflow_pressed">#E0E1E6</color>
+    <color name="parkflow_disabled">#EDEEF2</color>
+    <color name="parkflow_disabled_ink">#686A72</color>
+    <color name="parkflow_filled">#44464E</color>
+    <color name="parkflow_filled_pressed">#313236</color>
+    <color name="parkflow_focus">#686A72</color>
+</resources>

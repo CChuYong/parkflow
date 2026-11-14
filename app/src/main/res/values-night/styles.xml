@@ -1,0 +1,15 @@
+<resources>
+    <style name="Theme.ParkFlow" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">@font/asta_sans</item>
+        <item name="android:colorAccent">@color/parkflow_supporting</item>
+        <item name="android:windowBackground">@color/parkflow_canvas</item>
+        <item name="android:colorBackground">@color/parkflow_canvas</item>
+        <item name="android:textColorPrimary">@color/parkflow_ink</item>
+        <item name="android:textColorSecondary">@color/parkflow_supporting</item>
+        <item name="android:statusBarColor">@color/parkflow_canvas</item>
+        <item name="android:navigationBarColor">@color/parkflow_canvas</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+</resources>
