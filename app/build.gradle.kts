@@ -34,7 +34,7 @@ android {
     namespace = "io.parkflow.probe"
     compileSdk = 34
     useLibrary("android.car")
-    defaultConfig { applicationId = "io.parkflow.probe"; minSdk = 28; targetSdk = 34; versionCode = 10; versionName = "0.10" }
+    defaultConfig { applicationId = "io.parkflow.probe"; minSdk = 28; targetSdk = 34; versionCode = 11; versionName = "0.11" }
     buildFeatures { buildConfig = true }
     signingConfigs {
         releaseSigningProperties?.let { properties ->
@@ -50,7 +50,10 @@ android {
     buildTypes {
         getByName("debug") { buildConfigField("boolean", "PARKING_NAV_POC", "true") }
         getByName("release") {
-            buildConfigField("boolean", "PARKING_NAV_POC", "false")
+            isDebuggable = false
+            // Contest release preserves the validated emulator PoC notification behavior.
+            // This classification is not evidence of production/App Market approval.
+            buildConfigField("boolean", "PARKING_NAV_POC", "true")
             if (releaseSigningProperties != null) signingConfig = signingConfigs.getByName("localRelease")
         }
         // Explicit emulator demonstration variant; signing is not a vehicle-policy exemption.

@@ -295,7 +295,8 @@ class ProbeService : Service() {
         // Pleos also removes the popup on action click. Generic system removal is
         // presentation state, not a user's domain dismissal: do not invalidate the ticket.
         // postedParkingToken prevents reposting; explicit decline/gear/context/TTL still invalidate.
-        // NAVIGATION is a debug/demo PoC classification; production eligibility is unconfirmed.
+        // NAVIGATION is a PoC classification, including the contest release;
+        // production eligibility is unconfirmed.
         val category = if (BuildConfig.PARKING_NAV_POC) Notification.CATEGORY_NAVIGATION else Notification.CATEGORY_REMINDER
         val notification = Notification.Builder(this, PARKING_CHANNEL)
             .setSmallIcon(R.drawable.ic_navigation).setContentTitle("주차 기록 남기기")

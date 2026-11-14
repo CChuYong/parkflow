@@ -1,6 +1,6 @@
 #!/bin/sh
 set -eu
-case "${1:-demo}" in
+case "${1:-release}" in
     demo) VARIANT=Demo; OUTPUT=demo ;;
     release) VARIANT=Release; OUTPUT=release ;;
     *) echo 'Usage: ./scripts/build-signed.sh [demo|release]' >&2; exit 1 ;;
