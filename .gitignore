@@ -20,3 +20,7 @@ keystore.properties
 *.aab
 *.mp4
 *.log
+
+# Exact contest deliverables; other APKs and raw recordings remain excluded.
+!/apk/클로버_ParkFlow_release.apk
+!/demo/ParkFlow-introduction.mp4

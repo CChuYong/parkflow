@@ -40,4 +40,4 @@ Unmodified variable font from [google/fonts ofl/astasans](https://github.com/goo
 
 ## Submission scope
 
-Version 0.10 preserves the 0.9 visual design and adds the explicit signed demo build configuration. Lot display names use a parking-lot suffix where necessary, with the road address below the title. Runtime/build results for the submission are in [validation.md](validation.md).
+Version 0.11 preserves the 0.9 visual design and uses the signed release build for contest submission. Lot display names use a parking-lot suffix where necessary, with the road address below the title. Runtime/build results for the submission are in [validation.md](validation.md).

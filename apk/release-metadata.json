@@ -1,0 +1,39 @@
+{
+  "app": "ParkFlow",
+  "team": "클로버",
+  "applicationId": "io.parkflow.probe",
+  "versionName": "0.11",
+  "versionCode": 11,
+  "buildType": "release",
+  "debuggable": false,
+  "parkingNavPoc": true,
+  "apk": "클로버_ParkFlow_release.apk",
+  "bytes": 7094375,
+  "sha256": "9e652d1594936dc0442b9c889eff6f3aaf365b489d93dde6ad10d91991fea495",
+  "certificateSha256": "0636ecede4237518cc7505e7afcebf093f811a45666bfe9d8b3d6c71fce900a7",
+  "buildSourceCommit": "62dd0a3b680d74ba11dd04152dcaeee7a125f51d",
+  "appSourceTree": "097d599511043d6435256391c5f9fd389b6a285b",
+  "submissionTag": "v0.11-release",
+  "testEnvironment": {
+    "emulator": "Pleos Connect 2.1.0",
+    "androidApi": 34,
+    "abi": "arm64-v8a",
+    "screenPixels": [
+      2560,
+      1440
+    ],
+    "densityDpi": 160
+  },
+  "verification": {
+    "unitTests": 45,
+    "testFailures": 0,
+    "lintErrors": 0,
+    "lintWarnings": 3,
+    "signed": true,
+    "installedApkMatches": true,
+    "nativeDestinationRecommendationRoute": true,
+    "gearPromptAndExplicitSave": true,
+    "recordRestoredAfterRelaunch": true
+  },
+  "scope": "Vehicle PoC. Mobile/account/server sync and film travel-time comparison are target UX or illustrative data. Notification classification is not App Market approval."
+}

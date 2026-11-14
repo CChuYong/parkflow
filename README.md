@@ -6,14 +6,14 @@
 
 ## 제출 자료와 구현 범위
 
-제출 버전: **0.10 / versionCode 10**, applicationId: `io.parkflow.probe`.
+제출 버전: **0.11 / versionCode 11 · release**, applicationId: `io.parkflow.probe`.
 
-APK·소개 영상·소스 ZIP은 이 저장소와 함께 제공되는 제출 자료입니다. GitHub 업로드 시 저장소의 **Releases → v0.10-demo → Assets**에서 다음 파일을 제공합니다. 현재 로컬 준비본에는 원격 다운로드 링크가 없습니다.
+- **[제출 APK: 클로버_ParkFlow_release.apk](apk/클로버_ParkFlow_release.apk)** — 실제 `release` 변형으로 빌드·서명한 실행 파일, 디버깅 비활성화
+- **[최종 소개 영상 · 약 100초](demo/ParkFlow-introduction.mp4)** — 실제 차량 PoC와 모바일 목표 UX를 구분한 영상
+- [APK 버전·인증서·SHA-256](apk/release-metadata.json), [해시 확인 파일](apk/SHA256SUMS.txt)
+- [공식 제출 요건 대조표](docs/submission-checklist.md), [실행 검증 결과](docs/validation.md)
 
-- `ParkFlow-0.10-demo.apk` — 서명된 에뮬레이터 시연용 앱
-- `ParkFlow-introduction.mp4` — 실제 차량 PoC와 모바일 목표 UX를 구분한 약 100초 소개 영상
-- `ParkFlow-0.10-source.zip` — 이 저장소의 소스 스냅샷
-- `release-metadata.json`, `SHA256SUMS.txt` — 소스 커밋, 빌드 설정, 파일 무결성 정보
+[공식 제출 안내](https://appdevchallenge.auto-hmg.io/guide/submission)에 따라 APK를 저장소의 `apk/` 폴더에 포함합니다. 최종 제출 버전 태그는 `v0.11-release`입니다. 접수 메일에는 이 태그가 가리키는 **전체 커밋 해시**와 저장소 주소·APK 경로를 기재합니다. APK 용량이 작아 별도 GitHub Release 다운로드는 필요하지 않습니다.
 
 | 구분 | 범위 |
 | --- | --- |
@@ -27,7 +27,7 @@ QR은 `parkflow://pair-demo?version=1`을 담은 **연결 화면 미리보기**�
 ## 빠른 실행
 
 1. 공식 Pleos Playground에서 **Pleos Connect 에뮬레이터**를 설치하고 실행합니다. 일반 휴대폰 에뮬레이터에는 차량 내비 서비스가 없어 전체 흐름을 검증할 수 없습니다.
-2. `adb install -r ParkFlow-0.10-demo.apk`로 설치한 뒤 ParkFlow를 실행합니다.
+2. `adb install -r "apk/클로버_ParkFlow_release.apk"`로 설치한 뒤 ParkFlow를 실행합니다.
 3. QR 미리보기의 **내비로 시작하기**를 누르고 알림 권한을 허용합니다. 최초 한 번 사용자가 이 과정을 시작해야 백그라운드 내비 이벤트를 받을 수 있습니다.
 4. 기본 내비에서 **카페머머** 등 삼성역 인근 목적지를 검색하고 길 안내를 시작합니다. 정차 상태에서 조작합니다.
 5. 추천 알림의 **다른 주차장 보기**로 비교하거나 **이곳으로 안내**로 바로 경로를 요청합니다. 비교 화면에서는 체류 시간을 선택하고 주차장을 고릅니다.
@@ -47,6 +47,8 @@ QR은 `parkflow://pair-demo?version=1`을 담은 **연결 화면 미리보기**�
 | Android | minSdk 28, compileSdk·targetSdk 34, build-tools 34.0.0 |
 | NaviHelper | 3.0.5, 공식 Pleos Maven 저장소 |
 | 실행 검증 환경 | Pleos Connect 2.1.0 / Android 34 / arm64 |
+| 에뮬레이터 전체 화면 | **2560 × 1440 px, 160 dpi, 가로 배치** |
+| 차량 앱 표시 | 전체 화면의 우측 앱 영역에 표시, 시스템 바·차량 표시 영역 제외 |
 
 Android SDK에 `platforms;android-34`, `build-tools;34.0.0`, `platform-tools`가 필요합니다. `platforms/android-34/optional/android.car.jar`도 확인하세요. 에뮬레이터 이미지는 저장소에 포함하지 않습니다.
 
@@ -62,21 +64,21 @@ macOS의 등록된 JDK 17 및 macOS/Linux 기본 SDK 위치는 자동 탐색합�
 
 명령은 debug APK 생성, Android lint, 단위 테스트를 수행합니다. 결과는 `app/build/outputs/apk/debug/app-debug.apk`입니다. Windows는 동일한 환경 변수를 설정한 뒤 `gradlew.bat assembleDebug lintDebug testDebugUnitTest`를 사용하세요. Windows 실행 자체는 검증하지 않았습니다.
 
-## 제출용 빌드와 일반 release
-
-| 빌드 | 디버깅 | 서명 | P 전환 후 기록 제안 알림 |
-| --- | --- | --- | --- |
-| debug | 가능 | Android debug 키 | NAVIGATION 실험 분류 |
-| demo · 제출용 | 불가 | 외부 개인 서명키 | NAVIGATION 실험 분류, 기존 시연과 동일 |
-| release | 불가 | 외부 개인 서명키 | REMINDER 분류 |
-
-**주차장 추천 알림은 세 빌드 모두 NAVIGATION 분류입니다.** 위 차이는 P 전환 후 기록 제안 알림에만 해당합니다. demo 빌드는 시스템 서명이나 차량 UI 정책 면제를 받지 않으며, 팝업 표시와 분류의 실제 배포 적합성은 별도 확인 대상입니다. 앱은 자체 오버레이를 사용하지 않습니다.
+## 제출용 release 빌드
 
 ```sh
-PARKFLOW_SIGNING_PROPERTIES=/path/outside/repository/signing.properties ./scripts/build-signed.sh demo
+PARKFLOW_SIGNING_PROPERTIES=/path/outside/repository/signing.properties ./scripts/build-signed.sh release
 ```
 
-[서명 설정](docs/signing.md)에 따라 본인의 키를 사용하세요. 제출자의 개인키와 비밀번호는 제공하지 않습니다. APK를 단순히 실행하는 데에는 키가 필요하지 않습니다.
+이 명령은 `assembleRelease`, `lintRelease`, `testReleaseUnitTest`를 실행하고, 서명·정렬·디버깅 비활성화를 검증합니다. 결과는 `app/build/outputs/apk/release/app-release.apk`이며, 이 파일을 `apk/클로버_ParkFlow_release.apk`로 복사해 제출합니다. 기존 demo APK의 파일명만 바꾼 것이 아닙니다.
+
+0.11 release는 기존 시연에서 검증한 알림 동작을 유지하도록 `PARKING_NAV_POC=true`로 구성했습니다. 주차장 추천과 P 전환 후 기록 제안은 Android `NAVIGATION` 분류를 사용합니다. 이는 **에뮬레이터 PoC의 알림 분류**이며, 시스템 서명·화면 오버레이·차량 UI 정책 면제 또는 앱 마켓 승인을 의미하지 않습니다. 실제 차량 배포 시 알림 분류와 표시 정책은 별도 검토 대상입니다.
+
+`debug`는 개발용으로만 사용합니다. 이전 `demo` 빌드 별칭도 남아 있지만, 공모전 제출물은 위 **release APK**입니다. [서명 설정](docs/signing.md)에 따라 본인의 키로 빌드할 수 있습니다. 제출자의 개인키와 비밀번호는 제공하지 않으며 APK 실행에는 키가 필요하지 않습니다.
+
+## 접수 시 확인
+
+저장소는 공개 상태입니다. 공식 안내에 따라 **1차 결과 발표일인 2026-11-23까지 공개 상태를 유지**합니다. 심사용 계정 초대는 필요하지 않습니다. 접수 메일에는 저장소 주소·APK 경로·최종 커밋 해시를 적고, 작성·서명한 접수양식과 참가자 전원의 동의서를 준비해 팀원 전원을 CC합니다. 서명 동의서와 개인 연락처는 이 공개 저장소에 올리지 않습니다. [공식 제출 안내](https://appdevchallenge.auto-hmg.io/guide/submission)
 
 ## 구조와 자료
 
