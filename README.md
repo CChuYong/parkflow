@@ -4,6 +4,22 @@
 
 기존 차량 내비게이션의 목적지를 읽어 주변 주차장을 제안하고, 선택한 주차장으로 길 안내를 연결하는 Pleos Connect 차량용 앱 PoC입니다. 최종 서비스는 차량에서 선택한 정보를 휴대폰으로 이어 주차 위치 기록과 차량 복귀를 돕는 것을 목표로 합니다.
 
+## 주요 화면
+
+Pleos Connect 2.1.0에서 **실제 0.11 release APK**를 실행한 화면입니다. 이미지를 누르면 원본을 크게 확인할 수 있습니다.
+
+| ① 목적지 주변 주차장 제안 | ② 주차장·예상 요금 비교 |
+| --- | --- |
+| [![기본 내비 위에 표시된 주변 주차장 추천 팝업](docs/images/release-0.11/recommendation.png)](docs/images/release-0.11/recommendation.png) | [![주차장 3곳의 이름·주소·2시간 예상 요금 비교](docs/images/release-0.11/comparison.png)](docs/images/release-0.11/comparison.png) |
+| 기본 내비에 목적지를 설정하면 주변 주차장을 먼저 제안합니다. | 머무를 시간을 선택하고, 예상 요금과 직선거리를 비교합니다. |
+
+| ③ 기본 내비로 길 안내 연결 | ④ 주차 여부 확인 후 기록 |
+| --- | --- |
+| [![선택한 주차장으로 목적지가 변경된 기본 내비게이션](docs/images/release-0.11/native-route.png)](docs/images/release-0.11/native-route.png) | [![기어 P 전환 후 사용자가 주차 여부를 직접 확인하는 화면](docs/images/release-0.11/parking-confirm.png)](docs/images/release-0.11/parking-confirm.png) |
+| 주차장을 선택하면 주소를 다시 입력하지 않고 기본 내비로 안내합니다. | 지원 환경의 P 전환을 계기로 확인을 제안하고, 사용자가 확인해야 기록합니다. |
+
+위 화면은 차량 앱의 구현 범위입니다. 휴대폰에서 사진을 남기고 차량으로 돌아오는 경험은 [소개 영상](demo/ParkFlow-introduction.mp4)의 **목표 UX · 모바일 프로토타입**으로 구분합니다. [전체 실행 검증 화면 보기](docs/validation.md)
+
 ## 제출 자료와 구현 범위
 
 제출 버전: **0.11 / versionCode 11 · release**, applicationId: `io.parkflow.probe`.
